@@ -1,0 +1,7 @@
+torndsession
+redis
+motor
+Crypto
+tornado-redis==2.4.18
+python-oauth2==0.7.0
+oath2==1.5.1

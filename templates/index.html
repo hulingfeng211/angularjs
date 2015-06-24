@@ -1,0 +1,94 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../static/bootstrap-3.3.5/css/bootstrap.css">
+    <script src="../static/angular/angular.js"></script>
+</head>
+<body ng-app="myapp" ng-controller="userctrl">
+<div class="container">
+    <h3>Users</h3>
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th align="center">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="userinfo in users">
+
+            <td>
+                {{userinfo.fName}}
+            </td>
+            <td>
+                {{userinfo.lName}}
+            </td>
+            <td align="right">
+                <button class="btn" ng-click="editUser(userinfo._id)">
+                    <span class="glyphicon glyphicon-pencil"></span>Edit
+                </button>
+                <button class="btn btn-danger" ng-click="deleteUser(userinfo._id)">
+                    <span class="glyphicon glyphicon-remove"></span>Delete
+                </button>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <hr/>
+    <button class="btn btn-success" ng-click="editUser('')">
+        <span class="glyphicon glyphicon-user">Create New User:</span>
+    </button>
+    <hr/>
+    <h3 ng-show="edit">Create New User:</h3>
+
+    <h3 ng-hide="eidt">Edit User:</h3>
+
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">User NO:</label>
+
+            <div class="col-sm-10">
+                <input type="text" ng-model="_id" ng-disabled="true" placeholder="id">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">First Name:</label>
+
+            <div class="col-sm-10">
+                <input type="text" ng-model="fName" ng-disabled="!edit" placeholder="First Name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Last Name:</label>
+
+            <div class="col-sm-10">
+                <input type="text" ng-model="lName" ng-disabled="false" placeholder="Last Name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Password:</label>
+
+            <div class="col-sm-10">
+                <input type="text" ng-model="passw1" placeholder="Password">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Repeat:</label>
+
+            <div class="col-sm-10">
+                <input type="text" ng-model="passw2" placeholder="Repeat Password">
+            </div>
+        </div>
+    </form>
+
+    <hr>
+    <button ng-click="saveUser()" class="btn btn-success" ng-disabled="error || incomplete">
+        <span class="glyphicon glyphicon-save"></span> Save Changes
+    </button>
+</div>
+
+<script src="../static/js/myusers.js"></script>
+</body>
+</html>
