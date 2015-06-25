@@ -41,6 +41,9 @@ class MyApplication(Application):
                 title=settings['site_title']
             )),
             (r'/demo', HTTPDemoHandler),
+            (r'/demo/quickstart',StaticHandler,dict(
+                template_name='quickstart.html'
+            )),
             (r'/user/list', UserHandler),
             (r'/user', UserHandler),#post
             (r'/user/(\w+)', UserHandler),#delete
