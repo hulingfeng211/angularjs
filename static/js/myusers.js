@@ -9,9 +9,25 @@ angular.module('myapp', []).controller('userctrl', function ($scope, $http) {
     $scope.edit = true;
     $scope.error = false;
     $scope.incomplete = false;
-    $scope.loadData = function () {
-        $http.get('/user/list').success(function (response) {
-            $scope.users = response;
+    $scope.loadData = function (page,limit) {
+        if(page==undefined || limit==undefined){
+            url='/user/list?page=1&limit=10';
+
+        }
+        else{
+            '/user/list?page='+page+"&limit="+limit;
+        }
+        $http.get(url).success(function (response) {
+            if(response.page==1){
+                $scope.users = response.data;
+            }
+            else{
+                angular.forEach(response.data,function(item){
+                    $scope.users.push(item)
+                });
+            }
+            $scope.total=response.total;
+            $scope.page=response.page+1;
         });
 
     };

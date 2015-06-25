@@ -42,7 +42,7 @@ class MyApplication(Application):
             )),
             (r'/demo', HTTPDemoHandler),
             (r'/demo/quickstart',StaticHandler,dict(
-                template_name='quickstart.html'
+                template_name='App/demo/quickstart.html'
             )),
             (r'/user/list', UserHandler),
             (r'/user', UserHandler),#post

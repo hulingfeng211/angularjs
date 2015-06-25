@@ -2,19 +2,39 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="../static/bootstrap-3.3.5/css/bootstrap.css">
+    <title>我的服务器</title>
+    <link rel="stylesheet" href="../../../static/bootstrap-3.3.5/css/bootstrap.css">
 </head>
-<body ng-app="httpApp1" ng-controller="httpController">
+<body ng-app="demoApp" ng-controller="quickStartController" ng-init="click=false">
 
 <div class="container">
-    <ul class="list-group">
-        <li ng-repeat="x in names" class="list-group-item">
-            {{x}}
-        </li>
-    </ul>
+    <nav class="navbar navbar-default  navbar-static-top" style="background-color:#1d1338;color: white;"
+         role="navigation" bs-navbar>
+        <div class="navbar-header" style="font-size: larger">
+            <a class="navbar-brand" style="color: red;text-decoration: double;font-weight: 200;" href="#">我的服务器</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#page-one">Page One</a></li>
+            <li><a href="#page-two">Page Two</a></li>
+        </ul>
+    </nav>
+    <div id="">
+        asdfdfdsafdas
     </div>
-<script src="../static/angular/angular.js"></script>
-<script src="../static/js/httpdemo.js"></script>
+    <div id="page-one">
+        afsdafdsafs
+    </div>
+    <div id="page-two">
+        adfdasfdas
+    </div>
+
+</div>
+<script src="../../../static/angular/angular.js"></script>
+<script src="../../../static/angular-strap/angular-strap.min.js"></script>
+<script src="../../../static/angular-strap/angular-strap.tpl.min.js"></script>
+
+<script src="../../../static/js/App/demo/quickstart.js"></script>
+
 </body>
 </html>

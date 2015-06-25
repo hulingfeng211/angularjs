@@ -18,10 +18,22 @@ class HTTPDemoHandler(tornado.web.RequestHandler):
 
 class UserHandler(tornado.web.RequestHandler):
     def get(self, *args, **kwargs):
+
+        page=int(self.get_query_argument("page",1))
+        limit=int(self.get_query_argument("limit",10))
+
         db = self.application.dbsync
-        users = list(db.angular.find())
+        total_count=db.angular.count()
+
+        users =db.angular.find().skip((page-1)*limit).limit(limit);
+        #list(db.angular.find())
         """get user list """
-        self.write(core.json_encode(users))
+        self.write(core.json_encode({
+            "total":total_count,
+            "page":page,
+            "data":list(users)
+
+        }))
 
     def post(self, *args, **kwargs):
         """保存数据到mongodb"""
